@@ -13,6 +13,8 @@ module.exports = {
         contentBase:"./",
         port:3333
     },
+    mode:'production',
+    watch:true,
     module: {
       rules: [
         {

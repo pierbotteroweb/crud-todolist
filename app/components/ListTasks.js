@@ -9,17 +9,11 @@ class ListTasks extends React.Component{
     render(){
 
         const checkboxStyle={
-            display:'inline-block',
             background: 'lightblue',
-            padding:'10px',
-            fontFamily:'Arial'
         }
 
-        const checkboxCompleteStyle={
-            display:'inline-block',            
-            background: 'lightgreen',
-            padding:'10px',
-            fontFamily:'Arial'
+        const checkboxCompleteStyle={        
+            background: 'lightgreen'
         }
 
         var tarefaConcluida = this.props.tarefas.concluida;
@@ -28,11 +22,13 @@ class ListTasks extends React.Component{
             <div>
                 <input 
                         onChange={this.props.concluiTarefa} 
-                        value={this.props.id} 
+                        value={this.props.id}
+                        id={"tarefa"+this.props.id}
                         checked={tarefaConcluida} 
                         type="checkbox"/>
-                <p style={tarefaConcluida?
-                        checkboxCompleteStyle:checkboxStyle}  >{this.props.tarefas.tarefa}</p>
+                <label style={tarefaConcluida?
+                        checkboxCompleteStyle:checkboxStyle}  
+                        for={"tarefa"+this.props.id}>{this.props.tarefas.tarefa}</label>
             </div>
         )
     }

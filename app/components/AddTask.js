@@ -22,19 +22,11 @@ class AddTask extends React.Component{
 
     render(){
 
-        const fundoCinza={
-          background:'lightgrey',
-          padding:'10px',
-          fontFamily:'Arial',
-          maxWidth:'350px'
-        }
-
         return(
-            <div style={fundoCinza} >
-             <p>Insira aqui sua tarefa</p>
+            <div className="blocoEnviaTarefa">
              <form onSubmit={this.insereTarefa}>
+                  <button>+</button>
                   <input/>
-                  <button >Submit</button>
              </form>
             </div>)
     }

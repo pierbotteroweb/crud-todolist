@@ -1,9 +1,58 @@
+*{
+  font-family:'Arial';
+  margin:0;
+  padding:0
+}
+
+.mainWrap{
+  max-width: 270px;
+  background: lightgray;
+}
+
+.mainWrap p{
+  text-align: center;
+  margin:0;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+/*Estilização bloco de envio de tarefa*/
+
+.blocoEnviaTarefa{
+  background:lightgrey;
+  padding:20px 0px 0px 10px;
+  padding-block-end: 10px
+}
+
+.blocoEnviaTarefa input{
+  padding:4px 0 4px;
+	font-size:18px;
+}
+
+button {
+  background:transparent;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-size:28px;
+  padding-left: 4px;
+  padding-bottom: 5px;
+  margin-right: 4px;
+  text-decoration:none;
+  vertical-align: middle
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
+/* Estilização abas de status*/
 .tabs {
     position: relative;   
-    min-height: 10px; /* This part sucks */
+    min-height: 1px; 
     clear: both;
     margin: 25px 0;
-    font-family: Arial
   }
   .tab {
     float: left;
@@ -19,21 +68,32 @@
   .tab [type=radio] {
     display: none;   
   }
-  .content {
-    position: absolute;
-    top: 28px;
-    left: 0;
-    background: white;
-    right: 0;
-    bottom: 0;
-    padding: 20px;
-    border: 1px solid #ccc; 
+
+  /*Estilização caixas do checkbox de tarefas */
+
+  input[type=checkbox] + label {
+    display: block;
+    padding: 10px;
   }
-  [type=radio]:checked ~ label {
-    background: white;
-    border-bottom: 1px solid white;
-    z-index: 2;
+  
+  input[type=checkbox] {
+    display: none;
   }
-  [type=radio]:checked ~ label ~ .content {
-    z-index: 1;
+  
+  input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 3px solid #000;
+    border-radius: 3px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    padding-left: 4px;
+    padding-bottom: 5px;
+    margin-right: 4px;
+    color: transparent;
+  }
+  
+  
+  input[type=checkbox]:checked + label:before {
+    color: #000;
   }

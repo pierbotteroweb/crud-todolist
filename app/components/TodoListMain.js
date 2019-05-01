@@ -10,7 +10,13 @@ import ListaPorStatus from './ListaPorStatus';
         tarefas:[{
           tarefa:"Tarefa Base",
           concluida:false
-        }],
+        },{
+          tarefa:"Lavar Louça",
+          concluida:true
+        },{
+          tarefa:"Levar cachorro para passear",
+          concluida:false
+        },],
         mostraPorTipo:"todos"
       }
 
@@ -55,7 +61,8 @@ import ListaPorStatus from './ListaPorStatus';
     render() {
 
         return (
-          <div>
+          <div className="mainWrap" >
+            <p>LISTA DE TAREFAS REACT</p>
             <ListaPorStatus status={this.state.mostraPorTipo}
                 mostraCompImp={this.mostraCompletosIncompletos} />
             {

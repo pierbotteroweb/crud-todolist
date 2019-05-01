@@ -21,7 +21,8 @@
 .blocoEnviaTarefa{
   background:lightgrey;
   padding:20px 0px 0px 10px;
-  padding-block-end: 10px
+  -webkit-padding-after: 10px;
+          padding-block-end: 10px
 }
 
 .blocoEnviaTarefa input{

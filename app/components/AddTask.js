@@ -13,9 +13,11 @@ class AddTask extends React.Component{
     insereTarefa(evento){
         evento.preventDefault();
         let textoInserido = evento.target.getElementsByTagName('input')[0],
-        texto = textoInserido.value;
 
+        texto = textoInserido.value;
+        if(texto!==""){
         this.props.metodoAdiciona(texto);
+        }
 
 
     }

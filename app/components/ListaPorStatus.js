@@ -6,22 +6,26 @@ class ListaPorStatus extends React.Component{
     }
 
 render(){
-    return(
+    const pro = this.props;
+    return(   
+     
     <div className="tabs">
         <div className="tab">
         <input type="radio" id="tab-1" name="tab-group-1" value="todos" 
-                    checked={this.props.status==="todos"}
-                    onChange={this.props.mostraCompImp} /> <label for="tab-1">  Todos</label>
+                    checked={pro.status==="todos"}
+                    onChange={pro.mostraCompImp} /> <label for="tab-1">  Todos</label>
         </div>
         <div className="tab">
         <input type="radio" id="tab-2" name="tab-group-1" value="completos" 
-                    checked={this.props.status==="completos"}
-                    onChange={this.props.mostraCompImp} /> <label for="tab-2">  Completos</label>
+                    checked={pro.status==="completos"}
+                    onChange={pro.mostraCompImp} /> <label 
+                    style={{background: (pro.status==="completos") && 'lightgreen'}} for="tab-2">  Completos</label>
         </div>
         <div className="tab">
         <input type="radio" id="tab-3" name="tab-group-1" value="incompletos"  
-                    checked={this.props.status==="incompletos"}
-                    onChange={this.props.mostraCompImp} /> <label for="tab-3">  Incompletos</label>
+                    checked={pro.status==="incompletos"}
+                    onChange={pro.mostraCompImp} /> <label 
+                    style={{background: (pro.status==="incompletos") && 'lightblue'}} for="tab-3">  Incompletos</label>
         </div>
     </div>)
     }

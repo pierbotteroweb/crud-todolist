@@ -17,6 +17,7 @@ class AddTask extends React.Component{
         texto = textoInserido.value;
         if(texto!==""){
         this.props.metodoAdiciona(texto);
+        document.getElementsByTagName('form')[0].reset()
         }
 
 

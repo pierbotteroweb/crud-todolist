@@ -19,8 +19,6 @@ class AddTask extends React.Component{
         this.props.metodoAdiciona(texto);
         document.getElementsByTagName('form')[0].reset()
         }
-
-
     }
 
     render(){

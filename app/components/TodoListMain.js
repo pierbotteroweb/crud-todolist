@@ -7,16 +7,7 @@ import ListaPorStatus from './ListaPorStatus';
     constructor() {
       super();
       this.state={
-        tarefas:[{
-          tarefa:"Tarefa Base",
-          concluida:false
-        },{
-          tarefa:"Lavar Louça",
-          concluida:true
-        },{
-          tarefa:"Levar cachorro para passear",
-          concluida:false
-        },],
+        tarefas:[],
         mostraPorTipo:"todos"
       }
 
@@ -24,6 +15,18 @@ import ListaPorStatus from './ListaPorStatus';
       this.concluiTarefa = this.concluiTarefa.bind(this);
       this.mostraCompletosIncompletos = this.mostraCompletosIncompletos.bind(this);
 
+    }
+
+    componentDidMount(){
+      let self = this;
+      fetch('http://localhost:4400/tarefas')
+      .then(response=>response.json())
+      .then(function(response){
+        console.log(response.data);
+        self.setState({
+          tarefas:response.data
+        })
+      })
     }
 
     adicionaTarefa(tarefaX){

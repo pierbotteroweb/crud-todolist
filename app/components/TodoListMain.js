@@ -31,6 +31,12 @@ import ListaPorStatus from './ListaPorStatus';
 
     adicionaTarefa(tarefaX){
         let self = this;
+
+
+      fetch('http://localhost:4400/tarefas/add?tarefa='+tarefaX+'&concluida=false')
+      .then(function(response){
+        console.log('Dados inseridos pelo formulario principal');
+      })
         self.setState(prevState=>{
           let novaTarefa={tarefa:tarefaX,concluida:false};
           return{

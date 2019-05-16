@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
         if(err) throw err;
         console.log("Banco de dados epbwe109_todolist OK")
     })
-    conn.query("CREATE TABLE IF NOT EXISTS tarefas (tarefa VARCHAR(255), concluida boolean DEFAULT false)", function (err){
+    conn.query("CREATE TABLE IF NOT EXISTS tarefas (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, tarefa VARCHAR(255), concluida boolean DEFAULT false)", function (err){
         if(err) throw err;
         console.log("Tabela tarefas OK")
     })
@@ -57,8 +57,16 @@ app.get('/tarefas/add',(req,res)=>{
             console.log('dados inseridos')
         }
     })
+})
 
-
+app.get('/tarefas/update',(req,res)=>{
+    const { id_tarefa, concluida } = req.query    
+    const UPDATE_DADOS = 'UPDATE tarefas SET concluida='+concluida+' WHERE id='+id_tarefa
+    conn.query(UPDATE_DADOS,(err,res)=>{
+        if(res){
+            console.log('dados atualizados')
+        }
+    })
 })
 
 app.listen(4400, () => {

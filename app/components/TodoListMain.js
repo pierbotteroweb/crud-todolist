@@ -22,7 +22,6 @@ import ListaPorStatus from './ListaPorStatus';
       fetch('http://epbweb.com.br/back/tarefas')
       .then(response=>response.json())
       .then(function(response){
-        console.log(response.data);
         self.setState({
           tarefas:response.data
         })
@@ -65,6 +64,17 @@ import ListaPorStatus from './ListaPorStatus';
           tarefas:listaAtualizada
         }
       })
+      console.log(indiceTarefa)
+      var statusAtualizado = !this.state.tarefas[indiceTarefa].concluida
+      var indiceBD = parseInt(indiceTarefa)+1
+      var stringFetch = 'http://epbweb.com.br/back/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD
+      console.log(stringFetch)
+      fetch('http://epbweb.com.br/back/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD)
+      .then(function(response){
+        console.log('Dados atualizados pelo formulario principal');
+      })
+
+
     }
     
     render() {

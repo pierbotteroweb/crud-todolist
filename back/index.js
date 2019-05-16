@@ -12,9 +12,9 @@ const app = express()
 //config de conexão com o mySQL
 const conn = mysql.createConnection({
     host:'localhost',
-    user:'root',
+    user:'epbwe109_tdlist',
     password:'Parade04!',
-    database: 'todolist'
+    database: 'epbwe109_todolist'
 })
 
 //executando a conexão
@@ -26,9 +26,9 @@ conn.connect(function(err){
 app.use(cors())
 app.get('/',(req,res)=>{
     res.send('Servidor rodando aqui na porta 4400');
-    conn.query("CREATE DATABASE IF NOT EXISTS todolist", function (err){
+    conn.query("CREATE DATABASE IF NOT EXISTS epbwe109_todolist", function (err){
         if(err) throw err;
-        console.log("Banco de dados todolist OK")
+        console.log("Banco de dados epbwe109_todolist OK")
     })
     conn.query("CREATE TABLE IF NOT EXISTS tarefas (tarefa VARCHAR(255), concluida boolean DEFAULT false)", function (err){
         if(err) throw err;

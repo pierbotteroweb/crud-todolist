@@ -19,7 +19,7 @@ import ListaPorStatus from './ListaPorStatus';
 
     componentDidMount(){
       let self = this;
-      fetch('http://localhost:4400/tarefas')
+      fetch('http://epbweb.com.br/back/tarefas')
       .then(response=>response.json())
       .then(function(response){
         console.log(response.data);
@@ -33,7 +33,7 @@ import ListaPorStatus from './ListaPorStatus';
         let self = this;
 
 
-      fetch('http://localhost:4400/tarefas/add?tarefa='+tarefaX+'&concluida=false')
+      fetch('http://epbweb.com.br/back/tarefas/add?tarefa='+tarefaX+'&concluida=false')
       .then(function(response){
         console.log('Dados inseridos pelo formulario principal');
       })

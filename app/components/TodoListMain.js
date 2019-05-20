@@ -19,7 +19,7 @@ import ListaPorStatus from './ListaPorStatus';
 
     componentDidMount(){
       let self = this;
-      fetch('http://epbweb.com.br/back/tarefas')
+      fetch('http://localhost:4400/tarefas')
       .then(response=>response.json())
       .then(function(response){
         self.setState({
@@ -32,7 +32,7 @@ import ListaPorStatus from './ListaPorStatus';
         let self = this;
 
 
-      fetch('http://epbweb.com.br/back/tarefas/add?tarefa='+tarefaX+'&concluida=false')
+      fetch('http://localhost:4400/tarefas/add?tarefa='+tarefaX+'&concluida=false')
       .then(function(response){
         console.log('Dados inseridos pelo formulario principal');
       })
@@ -67,9 +67,9 @@ import ListaPorStatus from './ListaPorStatus';
       console.log(indiceTarefa)
       var statusAtualizado = !this.state.tarefas[indiceTarefa].concluida
       var indiceBD = parseInt(indiceTarefa)+1
-      var stringFetch = 'http://epbweb.com.br/back/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD
+      var stringFetch = 'http://localhost:4400/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD
       console.log(stringFetch)
-      fetch('http://epbweb.com.br/back/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD)
+      fetch('http://localhost:4400/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD)
       .then(function(response){
         console.log('Dados atualizados pelo formulario principal');
       })
@@ -87,7 +87,7 @@ import ListaPorStatus from './ListaPorStatus';
             {
                  (this.state.mostraPorTipo==="completos")?
                  this.state.tarefas.map((item,indice) =>
-                 (item.concluida)&&
+                 (item.concluida==1)&&
                  <ListTasks tarefas={item} id={indice}
                  concluiTarefa={this.concluiTarefa} />)
 

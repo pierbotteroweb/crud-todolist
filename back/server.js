@@ -7,12 +7,12 @@ const mysql = require('mysql')
 const app = express()
 //aplicar cors ao app para que seja possível acesso ao banco 
 //de dados por uma url de dominio diferente
-
+app.use(cors())
 
 //config de conexão com o mySQL
 const conn = mysql.createConnection({
     host:'localhost',
-    user:'epbwe109_tdlist',
+    user:'root',
     password:'Parade04!',
     database: 'epbwe109_todolist'
 })
@@ -23,7 +23,6 @@ conn.connect(function(err){
     console.log("Banco de dados conectado")
 })
 
-app.use(cors())
 app.get('/',(req,res)=>{
     res.send('Servidor rodando aqui na porta 4400');
     conn.query("CREATE DATABASE IF NOT EXISTS epbwe109_todolist", function (err){

@@ -19,16 +19,18 @@ class ListTasks extends React.Component{
         var tarefaConcluida = this.props.tarefas.concluida;
 
         return (
-            <div>
+            <div className="taskWrap">
                 <input 
                         onChange={this.props.concluiTarefa} 
                         value={this.props.id}
                         id={"tarefa"+this.props.id}
                         checked={tarefaConcluida} 
                         type="checkbox"/>
-                <label style={tarefaConcluida?
+                <label className="inputTask" style={tarefaConcluida?
                         checkboxCompleteStyle:checkboxStyle}  
-                        for={"tarefa"+this.props.id}>{this.props.tarefas.tarefa}</label>
+                        for={"tarefa"+this.props.id}
+                        >{this.props.tarefas.tarefa}</label>
+                <button className="delButton" >X</button>
             </div>
         )
     }

@@ -13,6 +13,7 @@ import ListaPorStatus from './ListaPorStatus';
 
       this.adicionaTarefa = this.adicionaTarefa.bind(this);
       this.concluiTarefa = this.concluiTarefa.bind(this);
+      this.deletaTarefa = this.deletaTarefa.bind(this);
       this.mostraCompletosIncompletos = this.mostraCompletosIncompletos.bind(this);
 
     }
@@ -67,14 +68,28 @@ import ListaPorStatus from './ListaPorStatus';
       console.log(indiceTarefa)
       var statusAtualizado = !this.state.tarefas[indiceTarefa].concluida
       var indiceBD = parseInt(indiceTarefa)+1
-      var stringFetch = 'http://pierbotteroweb.ddns.net:4400/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD
-      console.log(stringFetch)
       fetch('http://pierbotteroweb.ddns.net:4400/tarefas/update?concluida='+statusAtualizado+'&id_tarefa='+indiceBD)
       .then(function(response){
         console.log('Dados atualizados pelo formulario principal');
       })
+    }
 
+    deletaTarefa(evento){
+      let self = this;
+      let indiceTarefa = evento.target.value;
 
+      self.setState(function(prevState){
+        var listaAtualizada = prevState.tarefas;
+        listaAtualizada[indiceTarefa].deletada=true;
+        return{
+          tarefas:listaAtualizada
+        }
+      })
+      var indiceBD = parseInt(indiceTarefa)+1
+      fetch('http://pierbotteroweb.ddns.net:4400/tarefas/delete?id_tarefa='+indiceBD)
+      .then(function(response){
+        console.log('Tarefa deletada');
+      })
     }
     
     render() {
@@ -89,17 +104,20 @@ import ListaPorStatus from './ListaPorStatus';
                  this.state.tarefas.map((item,indice) =>
                  (item.concluida==1)&&
                  <ListTasks tarefas={item} id={indice}
-                 concluiTarefa={this.concluiTarefa} />)
+                 concluiTarefa={this.concluiTarefa}
+                 deletaTarefa={this.deletaTarefa} />)
 
                  :(this.state.mostraPorTipo==="incompletos")?
                  this.state.tarefas.map((item,indice) => 
                  (!item.concluida)&&
                  <ListTasks tarefas={item} id={indice}
-                 concluiTarefa={this.concluiTarefa} />)
+                 concluiTarefa={this.concluiTarefa}
+                 deletaTarefa={this.deletaTarefa} />)
 
                  :this.state.tarefas.map((item,indice) =>                
                  <ListTasks tarefas={item} id={indice}
-                 concluiTarefa={this.concluiTarefa} />)
+                 concluiTarefa={this.concluiTarefa}
+                 deletaTarefa={this.deletaTarefa} />)
               }
             <AddTask metodoAdiciona={this.adicionaTarefa}/>
           </div>

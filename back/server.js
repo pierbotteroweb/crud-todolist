@@ -12,9 +12,9 @@ app.use(cors())
 //config de conexão com o mySQL
 const conn = mysql.createConnection({
     host:'localhost',
-    user:'todolist',
+    user:'xxx',
     password:'xxx',
-    database: 'epbwe109_todolist'
+    database: 'xxx'
 })
 
 //executando a conexão
@@ -29,7 +29,7 @@ app.get('/',(req,res)=>{
         if(err) throw err;
         console.log("Banco de dados epbwe109_todolist OK")
     })
-    conn.query("CREATE TABLE IF NOT EXISTS tarefas (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, tarefa VARCHAR(255), concluida boolean DEFAULT false)", function (err){
+    conn.query("CREATE TABLE IF NOT EXISTS tarefas (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, tarefa VARCHAR(255), concluida boolean DEFAULT false, deletada boolean DEFAULT false)", function (err){
         if(err) throw err;
         console.log("Tabela tarefas OK")
     })
@@ -64,6 +64,16 @@ app.get('/tarefas/update',(req,res)=>{
     conn.query(UPDATE_DADOS,(err,res)=>{
         if(res){
             console.log('dados atualizados')
+        }
+    })
+})
+
+app.get('/tarefas/delete',(req,res)=>{
+    const { id_tarefa } = req.query    
+    const UPDATE_DADOS = 'UPDATE tarefas SET deletada=true WHERE id='+id_tarefa
+    conn.query(UPDATE_DADOS,(err,res)=>{
+        if(res){
+            console.log('tarefa deletada')
         }
     })
 })

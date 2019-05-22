@@ -16,10 +16,20 @@ class ListTasks extends React.Component{
             background: 'lightgreen'
         }
 
+        const deletedTaskStyle={
+            display:'none'
+        }
+
+        const notDeletedTaskStyle={
+            color:'#000'
+        }
+
         var tarefaConcluida = this.props.tarefas.concluida;
+        var tarefaDeletada = this.props.tarefas.deletada;
 
         return (
-            <div className="taskWrap">
+            <div className="taskWrap" style={tarefaDeletada?
+                deletedTaskStyle:notDeletedTaskStyle}>
                 <input 
                         onChange={this.props.concluiTarefa} 
                         value={this.props.id}
@@ -30,7 +40,10 @@ class ListTasks extends React.Component{
                         checkboxCompleteStyle:checkboxStyle}  
                         for={"tarefa"+this.props.id}
                         >{this.props.tarefas.tarefa}</label>
-                <button className="delButton" >X</button>
+                <button 
+                        onClick={this.props.deletaTarefa} 
+                        value={this.props.id}
+                        className="delButton">X</button>
             </div>
         )
     }

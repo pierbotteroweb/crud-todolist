@@ -40,6 +40,7 @@ class ListTasks extends React.Component{
                         checkboxCompleteStyle:checkboxStyle}  
                         for={"tarefa"+this.props.id}
                         >{this.props.tarefas.tarefa}</label>
+                <span>{this.props.tarefas.tarefa}</span>
                 <button 
                         onClick={this.props.deletaTarefa} 
                         value={this.props.id}
